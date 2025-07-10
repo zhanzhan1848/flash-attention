@@ -91,7 +91,7 @@ jobs:
         run: |
           git config --system core.longpaths true
           $cudaVersion = '${{ matrix.cuda }}'
-          $cudaVersionPytorch = '${{ matrix.cuda }}'.Remove('${{ matrix.cuda }}'.LastIndexOf('.')).Replace('.','')
+          $cudaVersionPytorch = '126'# '${{ matrix.cuda }}'.Remove('${{ matrix.cuda }}'.LastIndexOf('.')).Replace('.','')
           $pytorchIndexUrl = "https://download.pytorch.org/whl/cu$cudaVersionPytorch"
 
           uv pip install --upgrade build setuptools wheel packaging ninja torch==${{ matrix.torchver }} psutil --extra-index-url $pytorchIndexUrl
