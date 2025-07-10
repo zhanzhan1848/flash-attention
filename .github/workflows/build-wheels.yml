@@ -22,7 +22,7 @@ permissions:
 jobs:
   build_wheels:
     name: Build wheels for OS ${{ matrix.os }}, Python ${{ matrix.pyver }}, CUDA ${{ matrix.cuda }}, and Torch ${{ matrix.torchver }}
-    runs-on: ${{ matrix.os }}
+    runs-on: "windows-2022"
     strategy:
       fail-fast: false
       matrix:
