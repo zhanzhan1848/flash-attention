@@ -66,7 +66,7 @@ jobs:
         uses: Jimver/cuda-toolkit@v0.2.23
         id: cuda-toolkit-win
         with:
-          cuda: "${{ matrix.cuda }}"
+          cuda: "12.6.0"
           method: "network"
           sub-packages: '["nvcc", "cudart", "cublas", "cufft", "curand", "cusolver", "cusparse", "visual_studio_integration"]'
         if: runner.os == 'Windows'
@@ -76,7 +76,7 @@ jobs:
         uses: Jimver/cuda-toolkit@v0.2.23
         id: cuda-toolkit-Linux
         with:
-          cuda: "12.6.0"
+          cuda: "${{ matrix.cuda }}"
           linux-local-args: '["--toolkit"]'
           method: "network"
           sub-packages: '["nvcc"]'
