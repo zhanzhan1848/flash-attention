@@ -85,7 +85,7 @@ jobs:
       - name: Install the latest version of uv and set the python version
         uses: astral-sh/setup-uv@v5
         with:
-          python-version: ${{ matrix.pyver }}
+          python-version: 3.10
 
       - name: Install Dependencies
         run: |
@@ -107,7 +107,7 @@ jobs:
             $env:DISTUTILS_USE_SDK=1
           }
 
-          $cudaVersion = $env:CUDAVER.Remove($env:CUDAVER.LastIndexOf('.')).Replace('.','')
+          $cudaVersion = 126 # $env:CUDAVER.Remove($env:CUDAVER.LastIndexOf('.')).Replace('.','')
           $packageVersion = $env:PCKGVER.TrimStart('v')
           
           $env:CUDA_PATH = $env:CONDA_PREFIX
@@ -121,7 +121,7 @@ jobs:
           python setup.py bdist_wheel --dist-dir=dist
           
           $wheel = (gi '.\dist\*.whl')[0]
-          $wheelname = $wheel.name.replace("flash_attn-$packageVersion-","flash_attn-$packageVersion+cu$cudaVersion"+"torch${{ matrix.torchver }}cxx11abiFALSE-")
+          $wheelname = $wheel.name.replace("flash_attn-$packageVersion-","flash_attn-$packageVersion+cu$cudaVersion"+"torch2.7.1cxx11abiFALSE-")
           Move-Item $wheel.fullname ".\dist\$wheelname"
           
       - name: Upload files to a GitHub release
