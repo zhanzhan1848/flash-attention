@@ -94,6 +94,7 @@ jobs:
           $cudaVersionPytorch = '126'# '${{ matrix.cuda }}'.Remove('${{ matrix.cuda }}'.LastIndexOf('.')).Replace('.','')
           $pytorchIndexUrl = "https://download.pytorch.org/whl/cu$cudaVersionPytorch"
 
+          uv venv
           uv pip install --upgrade build setuptools wheel packaging ninja torch==2.7.1 psutil --extra-index-url $pytorchIndexUrl
 
       - name: Build Wheel
